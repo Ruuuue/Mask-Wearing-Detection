@@ -6,7 +6,7 @@ A modern Streamlit app that uses a YOLOv11 model to detect whether people in an 
 
 ## 📁 Project Overview
 
-This project leverages the power of **YOLOv8** (You Only Look Once – version 8) to detect whether individuals in an uploaded image are wearing face masks or not. It's wrapped in a **modern, interactive Streamlit web app**, making it incredibly easy for anyone to try out the model without needing to touch a single line of code.
+This project leverages the power of **YOLOv11** (You Only Look Once – version 11) to detect whether individuals in an uploaded image are wearing face masks or not. It's wrapped in a **modern, interactive Streamlit web app**, making it incredibly easy for anyone to try out the model without needing to touch a single line of code.
 
 The goal is to provide a lightweight, fast, and accessible tool that can be used for:
 
