@@ -20,7 +20,7 @@ model = load_model()
 
 # --- Header ---
 st.markdown("<h1 style='text-align: center; color: #4CAF50;'>😷 Mask Wearing Detection</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>Upload an image to check for mask compliance using YOLOv8</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>Upload an image to check for mask compliance</p>", unsafe_allow_html=True)
 st.markdown("---")
 
 # --- Image Upload ---
