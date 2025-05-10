@@ -1,6 +1,6 @@
 # 😷 Mask Wearing Detection
 
-A modern Streamlit app that uses a YOLOv8 model to detect whether people in an uploaded image are wearing masks or not.
+A modern Streamlit app that uses a YOLOv11 model to detect whether people in an uploaded image are wearing masks or not.
 
 ---
 
