@@ -25,7 +25,7 @@ The detection model was trained using images labeled as either `mask` or `no_mas
 
 ## 🔗 Live Demo
 
-👉 [Click here to try the app](https://mask-wearing-detection-cpvwzzysmf2czzsebfamxu.streamlit.app/)
+👉 [Click here to try the app](https://mask-wearing-detection-uzfhbf57m22s6qfapphywit.streamlit.app/)
 
 ---
 
