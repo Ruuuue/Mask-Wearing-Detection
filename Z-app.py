@@ -9,7 +9,7 @@ MODEL_PATH = "best.pt"
 INFERENCE_IMAGE_SIZE = 640  # Use None to let the model decide
 
 st.title("😷 Mask Wearing Detection")
-st.write(f"Upload an image to check for mask compliance")
+st.write(f"Upload an image to see detections from your '{os.path.basename(MODEL_PATH)}' model.")
 
 # --- Load Model ---
 try:
