@@ -14,7 +14,6 @@ def load_model():
     model.names = {
         0: "with_mask",
         1: "without_mask",
-        2: "mask_weared_incorrect"
     }
     return model
 
