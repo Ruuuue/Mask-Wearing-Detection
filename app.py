@@ -20,7 +20,7 @@ model = load_model()
 
 # --- Header ---
 st.markdown("<h1 style='text-align: center; color: #4CAF50;'>😷 Mask Wearing Detection</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>Upload an image to check for mask compliance</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>Upload an image to check for mask compliance using YOLOv8</p>", unsafe_allow_html=True)
 st.markdown("---")
 
 # --- Image Upload ---
@@ -28,16 +28,30 @@ uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
     image = Image.open(uploaded_file).convert("RGB")
-    st.image(image, caption="Uploaded Image", use_container_width=True)
+    st.image(image, caption="Uploaded Image", use_column_width=True)
 
     with st.spinner("Detecting... Please wait"):
-        img_array = np.array(image)
-        results = model(img_array)
+        # Resize image to standard size for YOLO
+        resized_image = image.resize((640, 640))
+        img_array = np.array(resized_image)
+
+        # Run prediction with confidence threshold
+        results = model.predict(img_array, conf=0.5)
+
+        # Get annotated result image
         result_img = results[0].plot()
+
+        # Optionally print class names and confidence
+        st.markdown("### Detection Info")
+        for box in results[0].boxes:
+            cls_id = int(box.cls)
+            conf = float(box.conf)
+            label = model.names[cls_id]
+            st.write(f"- **{label}**: {conf:.2f}")
 
     st.markdown("---")
     st.subheader("🧾 Detection Result")
-    st.image(result_img, caption="Processed Image", use_container_width=True)
+    st.image(result_img, caption="Processed Image", use_column_width=True)
     st.success("✅ Detection completed!")
 else:
     st.info("📤 Upload an image to get started.")
