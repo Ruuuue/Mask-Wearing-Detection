@@ -8,17 +8,19 @@ import os
 MODEL_PATH = "best.pt"
 INFERENCE_IMAGE_SIZE = 640  # Use None to let the model decide
 
+# OPTIONAL: Define custom class names manually if needed
+custom_class_names = {
+    0: "with_mask",
+    1: "without_mask",
+    2: "mask_weared_incorrect"
+}
+
 st.title("😷 Mask Wearing Detection")
 st.write(f"Upload an image to see detections from your '{os.path.basename(MODEL_PATH)}' model.")
 
 # --- Load Model ---
 try:
     model = YOLO(MODEL_PATH)
-    model.names = {
-        0: "with_mask",
-        1: "without_mask",
-        2: "mask_weared_incorrect"
-    }
 except Exception as e:
     st.error(f"Error loading YOLO model: {e}")
     st.stop()
@@ -45,10 +47,10 @@ if uploaded_file is not None:
 
                 # Show detected classes and counts
                 st.subheader("📋 Detected Classes:")
-                counts = {label: 0 for label in model.names.values()}
+                counts = {label: 0 for label in custom_class_names.values()}
                 for box in results[0].boxes:
                     cls_id = int(box.cls[0])
-                    label = model.names[cls_id]
+                    label = custom_class_names.get(cls_id, f"class_{cls_id}")
                     conf = float(box.conf[0])
                     counts[label] += 1
                     st.write(f"- **{label}** — {conf:.2f}")
